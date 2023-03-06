@@ -1,6 +1,6 @@
 package com.studiomedico.Studio.Medico.statusEnum;
 
-public enum StatusEnum {
+public enum StatusBooking {
     CONFIRMED,
     PENDING, // vorrei toglierlo
     CANCELLED;

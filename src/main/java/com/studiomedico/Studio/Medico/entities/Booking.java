@@ -1,6 +1,6 @@
 package com.studiomedico.Studio.Medico.entities;
 
-import com.studiomedico.Studio.Medico.statusEnum.StatusEnum;
+import com.studiomedico.Studio.Medico.statusEnum.StatusBooking;
 import jakarta.persistence.*;
 import java.time.LocalDate;
 @Entity
@@ -15,12 +15,12 @@ public class Booking {
     private LocalDate bookingDate;
 
     @Column(name = "status")
-    private StatusEnum status;
+    private StatusBooking status;
 
     public Booking() {
     }
 
-    public Booking(long idBooking, LocalDate bookingDate, StatusEnum status) {
+    public Booking(long idBooking, LocalDate bookingDate, StatusBooking status) {
         this.idBooking = idBooking;
         this.bookingDate = bookingDate;
         this.status = status;
@@ -42,11 +42,11 @@ public class Booking {
         this.bookingDate = bookingDate;
     }
 
-    public StatusEnum getStatus() {
+    public StatusBooking getStatus() {
         return status;
     }
 
-    public void setStatus(StatusEnum status) {
+    public void setStatus(StatusBooking status) {
         this.status = status;
     }
 }
