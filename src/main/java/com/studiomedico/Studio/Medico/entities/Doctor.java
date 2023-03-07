@@ -8,7 +8,6 @@ public class Doctor {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id_doctor")
     private long idDoctor;
     @Column(name = "name")
     private String name;

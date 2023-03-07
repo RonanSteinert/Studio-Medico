@@ -7,7 +7,6 @@ public class Secretary {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id_secretary")
     private long idSecretary;
     @Column(name = "name")
     private String name;

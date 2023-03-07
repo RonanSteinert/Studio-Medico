@@ -9,7 +9,6 @@ public class Booking {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id_booking")
     private long idBooking;
     @Column(name = "booking_date")
     private LocalDate bookingDate;
