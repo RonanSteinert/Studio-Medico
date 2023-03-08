@@ -12,8 +12,6 @@ public class ProvaUser extends Persona{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-    // di solito così creiamo una super classe ma come facciamo a mettere sti campi sulla tabella?
-    // avete qualche idea? qualche annotazione?
     public ProvaUser(String name, String surname, String email, String address, String telephone, long id) {
         super(name, surname, email, address, telephone);
         this.id = id;

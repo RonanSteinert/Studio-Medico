@@ -1,14 +1,20 @@
 package com.studiomedico.Studio.Medico.entities;
 
 import com.studiomedico.Studio.Medico.statusEnum.StatusGender;
+import jakarta.persistence.Column;
 
 import java.time.LocalDate;
 
 public class Persona {
+    @Column(name = "name")
     private String name;
+    @Column(name = "surname")
     private String surname;
+    @Column(name = "email")
     private String email;
+    @Column(name = "address")
     private String address;
+    @Column(name = "telephone")
     private String telephone;
 
     public Persona() {
