@@ -9,7 +9,7 @@ public class Doctor {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long idDoctor;
-    @Column(name = "name")
+
     private String name;
     @Column(name = "surname")
     private String surname;

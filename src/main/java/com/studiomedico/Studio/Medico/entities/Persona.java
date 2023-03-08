@@ -2,9 +2,10 @@ package com.studiomedico.Studio.Medico.entities;
 
 import com.studiomedico.Studio.Medico.statusEnum.StatusGender;
 import jakarta.persistence.Column;
+import jakarta.persistence.MappedSuperclass;
 
 import java.time.LocalDate;
-
+@MappedSuperclass
 public class Persona {
     @Column(name = "name")
     private String name;
