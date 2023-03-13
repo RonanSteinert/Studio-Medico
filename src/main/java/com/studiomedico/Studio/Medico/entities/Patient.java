@@ -11,8 +11,6 @@ public class Patient extends Persona {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long idPatient;
-
-
     @Column(name = "gender")
     private StatusGender gender;
     @Column(name = "birthDate")
