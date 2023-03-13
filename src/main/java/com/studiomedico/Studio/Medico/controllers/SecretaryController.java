@@ -15,15 +15,15 @@ public class SecretaryController {
     @Autowired
     private SecretaryRepository secretaryRepository;
 
-    @PostMapping("/create")
+    @PostMapping("/newsecretary")
     public Secretary createDoctor(@RequestBody Secretary secretary){
         return secretaryRepository.saveAndFlush(secretary);
     }
-    @GetMapping("/get/{id}")
+    @GetMapping("/secretarybyid/{id}")
     public Optional<Secretary> getSecretaryById(@PathVariable Long id) {
         return secretaryRepository.findById(id);
     }
-    @GetMapping("/getall")
+    @GetMapping("/allsecretary")
     public List<Secretary> getAllSecretary(){
         return secretaryRepository.findAll();
     }

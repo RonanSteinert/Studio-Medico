@@ -16,7 +16,7 @@ public class PatientController {
     @Autowired
     private PatientRepository patientRepository;
 
-    @PostMapping("/create")
+    @PostMapping("/newpatient")
     public Patient addPatient(@RequestBody Patient patient){
        return patientRepository.saveAndFlush(patient);
     }
