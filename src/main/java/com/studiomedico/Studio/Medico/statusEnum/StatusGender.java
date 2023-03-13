@@ -3,7 +3,7 @@ package com.studiomedico.Studio.Medico.statusEnum;
 public enum StatusGender {
     MALE("Male"),
     FEMALE("Female"),
-    UNDEFINED("Rcchiooooooooooooooooooooooooooooo");
+    UNDEFINED("Undefined");
 
     private final String description;
 

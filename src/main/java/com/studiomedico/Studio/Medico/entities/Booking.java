@@ -14,6 +14,7 @@ public class Booking {
     private LocalDate bookingDate;
 
     @Column(name = "status")
+    @Enumerated
     private StatusBooking status;
 
     public Booking() {

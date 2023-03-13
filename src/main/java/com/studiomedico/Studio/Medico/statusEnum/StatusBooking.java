@@ -1,5 +1,7 @@
 package com.studiomedico.Studio.Medico.statusEnum;
 
+import jakarta.persistence.Enumerated;
+
 public enum StatusBooking {
     CONFIRMED("Booking confirmed"),
     CANCELLED("Booking cancelled");
