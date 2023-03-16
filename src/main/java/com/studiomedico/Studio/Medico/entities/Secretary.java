@@ -6,7 +6,7 @@ import jakarta.persistence.*;
 public class Secretary extends Persona{
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long idSecretary;
 
 

@@ -1,33 +1,23 @@
-package com.studiomedico.Studio.Medico.entities;
+package com.studiomedico.Studio.Medico.controllers.DTO;
 
-import com.studiomedico.Studio.Medico.statusEnum.StatusGender;
-import jakarta.persistence.Column;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.MappedSuperclass;
-
-import java.time.LocalDate;
-@MappedSuperclass
-public class Persona {
-    @Column(name = "name")
+public class PersonaDTO {
     private String name;
-    @Column(name = "surname")
     private String surname;
-    @Column(name = "email")
     private String email;
-    @Column(name = "address")
     private String address;
-    @Column(name = "telephone")
     private String telephone;
+    private String fiscalCode;
 
-    public Persona() {
+    public PersonaDTO() {
     }
 
-    public Persona(String name, String surname, String email, String address, String telephone) {
+    public PersonaDTO(String name, String surname, String email, String address, String telephone, String fiscalCode) {
         this.name = name;
         this.surname = surname;
         this.email = email;
         this.address = address;
         this.telephone = telephone;
+        this.fiscalCode = fiscalCode;
     }
 
     public String getName() {
@@ -68,5 +58,13 @@ public class Persona {
 
     public void setTelephone(String telephone) {
         this.telephone = telephone;
+    }
+
+    public String getFiscalCode() {
+        return fiscalCode;
+    }
+
+    public void setFiscalCode(String fiscalCode) {
+        this.fiscalCode = fiscalCode;
     }
 }

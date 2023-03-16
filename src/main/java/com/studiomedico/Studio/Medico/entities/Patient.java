@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 public class Patient extends Persona {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long idPatient;
     @Column(name = "gender")
     private StatusGender gender;

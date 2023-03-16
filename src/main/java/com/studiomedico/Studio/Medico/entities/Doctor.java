@@ -7,7 +7,7 @@ import jakarta.persistence.*;
 public class Doctor extends Persona {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long idDoctor;
 
 
