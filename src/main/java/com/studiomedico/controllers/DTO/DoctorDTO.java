@@ -1,4 +1,4 @@
-package com.studiomedico.Studio.Medico.controllers.DTO;
+package com.studiomedico.controllers.DTO;
 
 public class DoctorDTO extends PersonaDTO {
     private String specialization;

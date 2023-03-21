@@ -1,6 +1,6 @@
-package com.studiomedico.Studio.Medico.entities;
+package com.studiomedico.entities;
 
-import com.studiomedico.Studio.Medico.statusEnum.StatusBooking;
+import com.studiomedico.statusEnum.StatusBooking;
 import jakarta.persistence.*;
 import java.time.LocalDate;
 @Entity

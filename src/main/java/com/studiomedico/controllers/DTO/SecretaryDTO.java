@@ -1,4 +1,4 @@
-package com.studiomedico.Studio.Medico.controllers.DTO;
+package com.studiomedico.controllers.DTO;
 
 public class SecretaryDTO extends PersonaDTO{
     //campi da aggiungere al Secretary

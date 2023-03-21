@@ -1,4 +1,4 @@
-package com.studiomedico.Studio.Medico.statusEnum;
+package com.studiomedico.statusEnum;
 
 public enum StatusGender {
     MALE("Male"),

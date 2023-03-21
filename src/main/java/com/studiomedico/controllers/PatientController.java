@@ -1,8 +1,7 @@
-package com.studiomedico.Studio.Medico.controllers;
+package com.studiomedico.controllers;
 
-import com.studiomedico.Studio.Medico.entities.Doctor;
-import com.studiomedico.Studio.Medico.entities.Patient;
-import com.studiomedico.Studio.Medico.repositories.PatientRepository;
+import com.studiomedico.entities.Patient;
+import com.studiomedico.repositories.PatientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

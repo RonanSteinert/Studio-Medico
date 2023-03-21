@@ -1,6 +1,6 @@
-package com.studiomedico.Studio.Medico.entities;
+package com.studiomedico.entities;
 
-import com.studiomedico.Studio.Medico.statusEnum.StatusRecord;
+import com.studiomedico.statusEnum.StatusRecord;
 import jakarta.persistence.Column;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.MappedSuperclass;

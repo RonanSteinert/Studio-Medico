@@ -1,6 +1,6 @@
-package com.studiomedico.Studio.Medico.entities;
+package com.studiomedico.entities;
 
-import com.studiomedico.Studio.Medico.statusEnum.StatusGender;
+import com.studiomedico.statusEnum.StatusGender;
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
 

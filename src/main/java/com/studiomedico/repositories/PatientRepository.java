@@ -1,8 +1,7 @@
-package com.studiomedico.Studio.Medico.repositories;
+package com.studiomedico.repositories;
 
-import com.studiomedico.Studio.Medico.entities.Patient;
+import com.studiomedico.entities.Patient;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import org.springframework.stereotype.Repository;
 
 @Repository

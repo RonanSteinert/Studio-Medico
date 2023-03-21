@@ -1,4 +1,4 @@
-package com.studiomedico.Studio.Medico;
+package com.studiomedico;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -1,10 +1,10 @@
-package com.studiomedico.Studio.Medico.controllers;
+package com.studiomedico.controllers;
 
-import com.studiomedico.Studio.Medico.entities.Doctor;
-import com.studiomedico.Studio.Medico.entities.Patient;
-import com.studiomedico.Studio.Medico.repositories.DoctorRepository;
-import com.studiomedico.Studio.Medico.repositories.PatientRepository;
-import com.studiomedico.Studio.Medico.statusEnum.StatusRecord;
+import com.studiomedico.entities.Doctor;
+import com.studiomedico.entities.Patient;
+import com.studiomedico.repositories.DoctorRepository;
+import com.studiomedico.repositories.PatientRepository;
+import com.studiomedico.statusEnum.StatusRecord;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -61,8 +61,8 @@ public class DoctorController {
         return patientRepository.findAll();
     }
 
-    @DeleteMapping
-    public ResponseEntity deleteById(Long id) {
+    @DeleteMapping("/{id}")
+    public ResponseEntity deleteById(@PathVariable("id") Long id) {
         if (doctorRepository.existsById(id)) {
             Doctor doctor = doctorRepository.findById(id).get();
             doctor.setStatus(StatusRecord.Deleted);

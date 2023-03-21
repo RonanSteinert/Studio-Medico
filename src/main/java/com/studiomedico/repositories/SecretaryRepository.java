@@ -1,5 +1,5 @@
-package com.studiomedico.Studio.Medico.repositories;
-import com.studiomedico.Studio.Medico.entities.Secretary;
+package com.studiomedico.repositories;
+import com.studiomedico.entities.Secretary;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

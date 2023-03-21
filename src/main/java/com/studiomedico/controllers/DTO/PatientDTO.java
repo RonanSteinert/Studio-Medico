@@ -1,6 +1,6 @@
-package com.studiomedico.Studio.Medico.controllers.DTO;
+package com.studiomedico.controllers.DTO;
 
-import com.studiomedico.Studio.Medico.statusEnum.StatusGender;
+import com.studiomedico.statusEnum.StatusGender;
 
 public class PatientDTO extends PersonaDTO {
     private Integer years;

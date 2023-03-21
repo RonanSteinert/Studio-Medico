@@ -1,4 +1,4 @@
-package com.studiomedico.Studio.Medico.entities;
+package com.studiomedico.entities;
 
 import jakarta.persistence.*;
 @Entity
