@@ -4,7 +4,10 @@ import com.studiomedico.Studio.Medico.entities.Doctor;
 import com.studiomedico.Studio.Medico.entities.Patient;
 import com.studiomedico.Studio.Medico.repositories.DoctorRepository;
 import com.studiomedico.Studio.Medico.repositories.PatientRepository;
+import com.studiomedico.Studio.Medico.statusEnum.StatusRecord;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -56,5 +59,17 @@ public class DoctorController {
     @GetMapping("/getallpatient")
     public List<Patient> getAllPatient(){
         return patientRepository.findAll();
+    }
+
+    @DeleteMapping
+    public ResponseEntity deleteById(Long id) {
+        if (doctorRepository.existsById(id)) {
+            Doctor doctor = doctorRepository.findById(id).get();
+            doctor.setStatus(StatusRecord.Deleted);
+            doctorRepository.saveAndFlush(doctor);
+            return new ResponseEntity(HttpStatus.NO_CONTENT);
+        } else {
+            return new ResponseEntity("no doctor exist with id " + id, HttpStatus.NOT_FOUND);
+        }
     }
 }

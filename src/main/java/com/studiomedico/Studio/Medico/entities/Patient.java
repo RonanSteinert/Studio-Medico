@@ -6,7 +6,7 @@ import java.time.LocalDateTime;
 
 @Entity
 @Table
-public class Patient extends Persona {
+public class Patient extends Person {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,17 +22,6 @@ public class Patient extends Persona {
 
     public Patient() {
     }
-
-    public Patient(String name, String surname, String email, String address, String telephone, long idPatient, StatusGender gender, LocalDateTime birthDate, String birthCity, String description) {
-        super ( name, surname, email, address, telephone );
-        this.idPatient = idPatient;
-        this.gender = gender;
-        this.birthDate = birthDate;
-        this.birthCity = birthCity;
-        this.description = description;
-    }
-
-
 
     public LocalDateTime getBirthDate() {
         return birthDate;

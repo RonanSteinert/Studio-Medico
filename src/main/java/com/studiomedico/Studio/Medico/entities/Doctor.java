@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 @Entity
 @Table
 
-public class Doctor extends Persona {
+public class Doctor extends Person {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -14,8 +14,8 @@ public class Doctor extends Persona {
     public Doctor() {
     }
 
-    public Doctor(String name, String surname, String email, String address, String telephone, long idDoctor) {
-        super ( name, surname, email, address, telephone );
+    public Doctor(long idDoctor) {
+        super();
         this.idDoctor = idDoctor;
     }
 
