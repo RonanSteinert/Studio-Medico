@@ -21,7 +21,7 @@ public class DoctorController {
     @Autowired
     private PatientRepository patientRepository;
 
-    @PostMapping("/newdoctor")
+    @PostMapping("/new")
     public Doctor createDoctor(@RequestBody Doctor doctor){
 
         return doctorRepository.saveAndFlush(doctor);
@@ -56,7 +56,7 @@ public class DoctorController {
         return doctorRepository.findAll();
     }
 
-    @GetMapping("/getallpatient")
+    @GetMapping("/allpatient")
     public List<Patient> getAllPatient(){
         return patientRepository.findAll();
     }
