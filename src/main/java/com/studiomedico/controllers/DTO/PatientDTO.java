@@ -7,16 +7,6 @@ public class PatientDTO extends PersonaDTO {
     private String description;
     private StatusGender gender;
 
-    public PatientDTO() {
-    }
-
-    public PatientDTO(String name, String surname, String email, String address, String telephone, String fiscalCode, Integer years, String description, StatusGender gender) {
-        super(name, surname, email, address, telephone, fiscalCode);
-        this.years = years;
-        this.description = description;
-        this.gender = gender;
-    }
-
     public Integer getYears() {
         return years;
     }

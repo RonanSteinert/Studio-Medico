@@ -8,18 +8,6 @@ public class PersonaDTO {
     private String telephone;
     private String fiscalCode;
 
-    public PersonaDTO() {
-    }
-
-    public PersonaDTO(String name, String surname, String email, String address, String telephone, String fiscalCode) {
-        this.name = name;
-        this.surname = surname;
-        this.email = email;
-        this.address = address;
-        this.telephone = telephone;
-        this.fiscalCode = fiscalCode;
-    }
-
     public String getName() {
         return name;
     }
