@@ -70,6 +70,7 @@ public class PatientService {
         patientResponseDTO.setAddress ( patient.getAddress () );
         patientResponseDTO.setTelephone ( patient.getTelephone () );
         patientResponseDTO.setStatusRecord ( patient.getStatusRecord () );
+        //TODO Aiungere campi mancanti
         return patientResponseDTO;
 
     }
@@ -81,6 +82,7 @@ public class PatientService {
         patient.setAddress ( patientRequestDTO.getAddress () );
         patient.setTelephone ( patientRequestDTO.getTelephone ());
         patient.setStatusRecord ( patientRequestDTO.getStatusRecord());
+        //TODO agiungere campi mancanti
         return patient;
     }
 
