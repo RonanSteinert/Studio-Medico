@@ -1,6 +1,8 @@
 package com.studiomedico.controllers.DTO;
 
-public class DoctorResponseDTO extends PersonaDTO{
+
+
+public class DoctorResponseDTO extends PersonaDTO {
 
     private Long id;
 
@@ -11,4 +13,6 @@ public class DoctorResponseDTO extends PersonaDTO{
     public void setId(Long id) {
         this.id = id;
     }
+
 }
+

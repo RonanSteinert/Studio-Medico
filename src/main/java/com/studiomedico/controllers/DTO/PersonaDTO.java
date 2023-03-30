@@ -1,12 +1,24 @@
 package com.studiomedico.controllers.DTO;
 
+import com.studiomedico.statusEnum.StatusRecord;
+
 public class PersonaDTO {
+
+    private StatusRecord statusRecord = StatusRecord.Active;
     private String name;
     private String surname;
     private String email;
     private String address;
     private String telephone;
     private String fiscalCode;
+
+    public StatusRecord getStatusRecord() {
+        return statusRecord;
+    }
+
+    public void setStatusRecord(StatusRecord statusRecord) {
+        this.statusRecord = statusRecord;
+    }
 
     public String getName() {
         return name;

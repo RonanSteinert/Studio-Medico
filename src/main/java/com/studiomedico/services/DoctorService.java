@@ -4,13 +4,14 @@ import com.studiomedico.controllers.DTO.DoctorRequestDTO;
 import com.studiomedico.controllers.DTO.DoctorResponseDTO;
 import com.studiomedico.entities.Doctor;
 import com.studiomedico.repositories.DoctorRepository;
+import com.studiomedico.statusEnum.StatusRecord;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
+import javax.print.Doc;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class DoctorService {
@@ -33,11 +34,19 @@ public class DoctorService {
 
     public DoctorResponseDTO putDoctor(Long id, DoctorRequestDTO doctorRequestDTO) {
         Doctor doctor = doctorRepository.findById (id).orElseThrow (RuntimeException::new);
-        doctorRequestToEntity (doctorRequestDTO,doctor);
+        doctorRequestToEntity(doctorRequestDTO,doctor);
         return  doctorEntityToResponse (doctorRepository.save(doctor));
     }
 
-   // public DoctorResponseDTO deleteImmobile(Long id) {}
+    public DoctorResponseDTO deleteDoctor(Long id) throws Exception {
+        Doctor doctor = doctorRepository.findById ( id ).orElseThrow(Exception::new);
+        if(doctorRepository.existsById ( id )){
+        doctor.setStatusRecord ( StatusRecord.Deleted );}else{
+            System.out.println ("no doctor exist with id " + id);
+        }
+        return doctorEntityToResponse (doctor);
+    }
+
 
     private DoctorResponseDTO doctorEntityToResponse(Doctor doctor){
 
@@ -46,9 +55,9 @@ public class DoctorService {
         doctorResponseDTO.setName (doctor.getName ());
         doctorResponseDTO.setSurname ( doctor.getSurname () );
         doctorResponseDTO.setEmail ( doctor.getEmail () );
-        doctorResponseDTO.setAddress ( doctorResponseDTO.getAddress () );
-        doctorResponseDTO.setTelephone ( doctorResponseDTO.getTelephone () );
-        doctorResponseDTO.setFiscalCode ( doctorResponseDTO.getFiscalCode () );
+        doctorResponseDTO.setAddress ( doctor.getAddress () );
+        doctorResponseDTO.setTelephone ( doctor.getTelephone ());
+        doctorResponseDTO.setStatusRecord(doctor.getStatusRecord ());
         return  doctorResponseDTO;
 
     }
@@ -73,7 +82,8 @@ public class DoctorService {
         doctor.setSurname ( doctorRequestDTO.getSurname () );
         doctor.setEmail ( doctorRequestDTO.getEmail () );
         doctor.setAddress ( doctorRequestDTO.getAddress () );
-        doctor.setTelephone ( doctorRequestDTO.getTelephone () );
+        doctor.setTelephone ( doctorRequestDTO.getTelephone ());
+        doctor.setStatusRecord ( doctorRequestDTO.getStatusRecord());
         return doctor;
     }
 }

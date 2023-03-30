@@ -30,7 +30,7 @@ public class DoctorController {
         return doctorService.createDoctor(doctorRequestDTO);
     }
 
-    @GetMapping("/doctorbyid/{id}")
+    @GetMapping("/{id}")
     public DoctorResponseDTO getDoctor(@PathVariable("id") Long id){
         return doctorService.getDoctor (id);
     }
@@ -40,9 +40,14 @@ public class DoctorController {
         return doctorService.getAllDoctor();
     }
 
-    @PutMapping("/{id")
-    public DoctorResponseDTO putDoctor(@PathVariable("id")Long id, DoctorRequestDTO doctorRequestDTO){
-        return doctorService.putDoctor ( id,doctorRequestDTO );
+    @PutMapping("/{id}")
+    public DoctorResponseDTO putDoctor(@PathVariable("id")Long id,@RequestBody DoctorRequestDTO doctorRequestDTO){
+        return doctorService.putDoctor (id,doctorRequestDTO);
+    }
+
+    @DeleteMapping("/{id}")
+    public  DoctorResponseDTO deleteDoctor(@PathVariable("id") Long id) throws Exception {
+        return doctorService.deleteDoctor(id);
     }
 
 
