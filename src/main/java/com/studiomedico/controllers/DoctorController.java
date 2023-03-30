@@ -22,8 +22,6 @@ import java.util.Optional;
 public class DoctorController {
     @Autowired
     private DoctorService doctorService;
-    @Autowired
-    private PatientService patientService;
 
     @PostMapping("/new")
     public DoctorResponseDTO createDoctor(@RequestBody DoctorRequestDTO doctorRequestDTO){

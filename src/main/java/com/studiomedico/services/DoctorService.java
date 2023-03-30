@@ -6,6 +6,7 @@ import com.studiomedico.entities.Doctor;
 import com.studiomedico.repositories.DoctorRepository;
 import com.studiomedico.statusEnum.StatusRecord;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import javax.print.Doc;
@@ -41,8 +42,10 @@ public class DoctorService {
     public DoctorResponseDTO deleteDoctor(Long id) throws Exception {
         Doctor doctor = doctorRepository.findById ( id ).orElseThrow(Exception::new);
         if(doctorRepository.existsById ( id )){
-        doctor.setStatusRecord ( StatusRecord.Deleted );}else{
-            System.out.println ("no doctor exist with id " + id);
+        doctor.setStatusRecord(StatusRecord.Deleted);
+        doctorRepository.save(doctor);
+        }else{
+         //eccezione di Emi
         }
         return doctorEntityToResponse (doctor);
     }
