@@ -10,7 +10,7 @@ public class PersonaDTO {
     private String email;
     private String address;
     private String telephone;
-    private String fiscalCode;
+
 
     public StatusRecord getStatusRecord() {
         return statusRecord;
@@ -59,12 +59,6 @@ public class PersonaDTO {
     public void setTelephone(String telephone) {
         this.telephone = telephone;
     }
-
-    public String getFiscalCode() {
-        return fiscalCode;
-    }
-
-    public void setFiscalCode(String fiscalCode) {
-        this.fiscalCode = fiscalCode;
-    }
 }
+
+

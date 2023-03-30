@@ -10,8 +10,9 @@ public class Patient extends Person {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long idPatient;
+    private Long idPatient;
     @Column(name = "gender")
+    @Enumerated(EnumType.STRING)
     private StatusGender gender;
     @Column(name = "birthDate")
     private LocalDateTime birthDate;
@@ -21,6 +22,22 @@ public class Patient extends Person {
     private String description;
 
     public Patient() {
+    }
+
+    public Long getIdPatient() {
+        return idPatient;
+    }
+
+    public void setIdPatient(Long idPatient) {
+        this.idPatient = idPatient;
+    }
+
+    public StatusGender getGender() {
+        return gender;
+    }
+
+    public void setGender(StatusGender gender) {
+        this.gender = gender;
     }
 
     public LocalDateTime getBirthDate() {

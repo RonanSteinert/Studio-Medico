@@ -25,7 +25,7 @@ public class DoctorService {
     }
 
     public DoctorResponseDTO getDoctor(Long id){
-        Doctor doctor = doctorRepository.findById ( id ).orElseThrow(RuntimeException::new);
+        Doctor doctor = doctorRepository.findById(id).orElseThrow(RuntimeException::new);
         return doctorEntityToResponse(doctor);
     }
 
