@@ -2,7 +2,7 @@ package com.studiomedico.controllers.DTO;
 
 import com.studiomedico.statusEnum.StatusGender;
 
-public class PatientDTO extends PersonaDTO {
+public class PatientRequestDTO extends PersonaDTO {
     private Integer years;
     private String description;
     private StatusGender gender;

@@ -1,9 +1,13 @@
 package com.studiomedico.controllers;
 
+import com.studiomedico.controllers.DTO.DoctorRequestDTO;
+import com.studiomedico.controllers.DTO.DoctorResponseDTO;
 import com.studiomedico.entities.Doctor;
 import com.studiomedico.entities.Patient;
 import com.studiomedico.repositories.DoctorRepository;
 import com.studiomedico.repositories.PatientRepository;
+import com.studiomedico.services.DoctorService;
+import com.studiomedico.services.PatientService;
 import com.studiomedico.statusEnum.StatusRecord;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,25 +21,28 @@ import java.util.Optional;
 @RequestMapping("/doctor")
 public class DoctorController {
     @Autowired
-    private DoctorRepository doctorRepository;
+    private DoctorService doctorService;
     @Autowired
-    private PatientRepository patientRepository;
+    private PatientService patientService;
 
     @PostMapping("/new")
-    public Doctor createDoctor(@RequestBody Doctor doctor){
-
-        return doctorRepository.saveAndFlush(doctor);
+    public DoctorResponseDTO createDoctor(@RequestBody DoctorRequestDTO doctorRequestDTO){
+        return doctorService.createDoctor(doctorRequestDTO);
     }
 
+    /*
     @GetMapping("")
     public Optional<Doctor> getDoctor(@RequestParam Long id){
         //doctorRepository.existsById(id);
         return doctorRepository.findById(id);
     }
+
+     */
     @GetMapping("/doctorbyid/{id}")
-    public Optional<Doctor> getDoctorById(@PathVariable Long id) {
-        return doctorRepository.findById(id);
+    public DoctorResponseDTO getDoctor(@PathVariable("id") Long id){
+        return doctorService.getDoctor (id);
     }
+
     /*
     @PutMapping("/put/{id}")
     public Optional<Doctor>  putDoctor(@PathVariable Long id, @RequestParam String telephone){
@@ -52,9 +59,11 @@ public class DoctorController {
     }*/
 
     @GetMapping("/alldoctor")
-    public List<Doctor> getAllDoctor(){
-        return doctorRepository.findAll();
+    public List<DoctorResponseDTO> getAllDoctor(){
+        return doctorService.getAllDoctor ();
     }
+
+
 
     @GetMapping("/allpatient")
     public List<Patient> getAllPatient(){

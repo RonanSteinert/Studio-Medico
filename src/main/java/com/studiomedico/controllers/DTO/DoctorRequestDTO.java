@@ -1,6 +1,6 @@
 package com.studiomedico.controllers.DTO;
 
-public class DoctorDTO extends PersonaDTO {
+public class DoctorRequestDTO extends PersonaDTO {
     private String specialization;
 
     public String getSpecialization() {
