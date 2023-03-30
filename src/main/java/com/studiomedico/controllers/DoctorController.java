@@ -30,18 +30,18 @@ public class DoctorController {
         return doctorService.createDoctor(doctorRequestDTO);
     }
 
-    /*
-    @GetMapping("")
-    public Optional<Doctor> getDoctor(@RequestParam Long id){
-        //doctorRepository.existsById(id);
-        return doctorRepository.findById(id);
-    }
-
-     */
     @GetMapping("/doctorbyid/{id}")
     public DoctorResponseDTO getDoctor(@PathVariable("id") Long id){
         return doctorService.getDoctor (id);
     }
+
+    @GetMapping("/alldoctor")
+    public List<DoctorResponseDTO> getAllDoctor(){
+        return doctorService.getAllDoctor();
+    }
+
+
+
 
     /*
     @PutMapping("/put/{id}")
@@ -58,10 +58,6 @@ public class DoctorController {
 
     }*/
 
-    @GetMapping("/alldoctor")
-    public List<DoctorResponseDTO> getAllDoctor(){
-        return doctorService.getAllDoctor();
-    }
 
 
 /*
