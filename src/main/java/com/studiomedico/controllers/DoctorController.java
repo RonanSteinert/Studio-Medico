@@ -60,11 +60,11 @@ public class DoctorController {
 
     @GetMapping("/alldoctor")
     public List<DoctorResponseDTO> getAllDoctor(){
-        return doctorService.getAllDoctor ();
+        return doctorService.getAllDoctor();
     }
 
 
-
+/*
     @GetMapping("/allpatient")
     public List<Patient> getAllPatient(){
         return patientRepository.findAll();
@@ -81,4 +81,6 @@ public class DoctorController {
             return new ResponseEntity("no doctor exist with id " + id, HttpStatus.NOT_FOUND);
         }
     }
+
+ */
 }

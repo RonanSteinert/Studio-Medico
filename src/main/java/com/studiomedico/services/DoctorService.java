@@ -35,6 +35,7 @@ public class DoctorService {
     private DoctorResponseDTO doctorEntityToResponse(Doctor doctor){
 
         DoctorResponseDTO doctorResponseDTO = new DoctorResponseDTO ();
+        doctorResponseDTO.setId ( doctor.getIdDoctor () );
         doctorResponseDTO.setName (doctor.getName ());
         doctorResponseDTO.setSurname ( doctor.getSurname () );
         doctorResponseDTO.setEmail ( doctor.getEmail () );
@@ -46,7 +47,7 @@ public class DoctorService {
     }
 
     private List<DoctorResponseDTO> doctorEntitiesToResponse(){
-        List<Doctor> dottori = new ArrayList<> ();
+        List<Doctor> dottori = doctorRepository.findAll ();
         List<DoctorResponseDTO> doctorResponseDtos = new ArrayList<> ();
         for(Doctor doctor : dottori){
             doctorResponseDtos.add(doctorEntityToResponse(doctor));
