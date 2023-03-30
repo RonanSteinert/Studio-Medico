@@ -40,31 +40,20 @@ public class DoctorController {
         return doctorService.getAllDoctor();
     }
 
+    @PutMapping("/{id")
+    public DoctorResponseDTO putDoctor(@PathVariable("id")Long id, DoctorRequestDTO doctorRequestDTO){
+        return doctorService.putDoctor ( id,doctorRequestDTO );
+    }
+
+    @DeleteMapping("/{id}")
+    public
 
 
-
-    /*
-    @PutMapping("/put/{id}")
-    public Optional<Doctor>  putDoctor(@PathVariable Long id, @RequestParam String telephone){
-        Optional<Doctor> doctor;
-        if (doctorRepository.existsById(id)){
-            doctor = doctorRepository.findById(id);
-            doctor.setTelephone(telephone);
-            doctorRepository.saveAndFlush(doctor);
-        }else {
-            doctor = new Doctor();
-        }
-        return Optional.of(doctor);
-
-    }*/
 
 
 
 /*
-    @GetMapping("/allpatient")
-    public List<Patient> getAllPatient(){
-        return patientRepository.findAll();
-    }
+
 
     @DeleteMapping("/{id}")
     public ResponseEntity deleteById(@PathVariable("id") Long id) {

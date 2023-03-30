@@ -31,6 +31,13 @@ public class DoctorService {
         return doctorEntitiesToResponse();
     }
 
+    public DoctorResponseDTO putDoctor(Long id, DoctorRequestDTO doctorRequestDTO) {
+        Doctor doctor = doctorRepository.findById (id).orElseThrow (RuntimeException::new);
+        doctorRequestToEntity (doctorRequestDTO,doctor);
+        return  doctorEntityToResponse (doctorRepository.save(doctor));
+    }
+
+   // public DoctorResponseDTO deleteImmobile(Long id) {}
 
     private DoctorResponseDTO doctorEntityToResponse(Doctor doctor){
 
