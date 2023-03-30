@@ -45,12 +45,6 @@ public class DoctorController {
         return doctorService.putDoctor ( id,doctorRequestDTO );
     }
 
-    @DeleteMapping("/{id}")
-    public
-
-
-
-
 
 /*
 
