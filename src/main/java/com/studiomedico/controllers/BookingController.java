@@ -1,5 +1,7 @@
-package com.studiomedico.controllers.DTO;
+package com.studiomedico.controllers;
 
+import com.studiomedico.controllers.DTO.BookingRequestDTO;
+import com.studiomedico.controllers.DTO.BookingResponseDTO;
 import com.studiomedico.services.BookingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

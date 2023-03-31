@@ -2,20 +2,11 @@ package com.studiomedico.controllers;
 
 import com.studiomedico.controllers.DTO.DoctorRequestDTO;
 import com.studiomedico.controllers.DTO.DoctorResponseDTO;
-import com.studiomedico.entities.Doctor;
-import com.studiomedico.entities.Patient;
-import com.studiomedico.repositories.DoctorRepository;
-import com.studiomedico.repositories.PatientRepository;
 import com.studiomedico.services.DoctorService;
-import com.studiomedico.services.PatientService;
-import com.studiomedico.statusEnum.StatusRecord;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/doctor")
