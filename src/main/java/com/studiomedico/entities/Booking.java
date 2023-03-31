@@ -14,7 +14,7 @@ public class Booking {
     private LocalDate bookingDate;
 
     @Column(name = "status")
-    @Enumerated
+    @Enumerated(EnumType.STRING)
     private StatusBooking status;
 
     public Booking() {

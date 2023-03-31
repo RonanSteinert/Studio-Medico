@@ -23,12 +23,12 @@ public class PatientService {
         return patientEntityToResponse (patient);
     }
 
-    public PatientResponseDTO postPatient(PatientRequestDTO patientRequestDTO) {
-        return patientEntityToResponse ( patientRepository.save(patientRequestToEntity(patientRequestDTO)));
-    }
-
     public List<PatientResponseDTO> getAllPatients() {
         return patientEntitiesToResponse ();
+    }
+
+    public PatientResponseDTO postPatient(PatientRequestDTO patientRequestDTO) {
+        return patientEntityToResponse ( patientRepository.save(patientRequestToEntity(patientRequestDTO)));
     }
 
     public PatientResponseDTO putPatient(Long id, PatientRequestDTO patientRequestDTO) {
