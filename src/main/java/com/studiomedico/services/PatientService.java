@@ -70,7 +70,10 @@ public class PatientService {
         patientResponseDTO.setAddress ( patient.getAddress () );
         patientResponseDTO.setTelephone ( patient.getTelephone () );
         patientResponseDTO.setStatusRecord ( patient.getStatusRecord () );
-        //TODO Aiungere campi mancanti
+        patientResponseDTO.setBirthCity ( patient.getBirthCity () );
+        patientResponseDTO.setBirthDate ( patient.getBirthDate () );
+        patientResponseDTO.setGender ( patient.getGender () );
+        patientResponseDTO.setDescription ( patient.getDescription () );
         return patientResponseDTO;
 
     }
@@ -82,7 +85,10 @@ public class PatientService {
         patient.setAddress ( patientRequestDTO.getAddress () );
         patient.setTelephone ( patientRequestDTO.getTelephone ());
         patient.setStatusRecord ( patientRequestDTO.getStatusRecord());
-        //TODO agiungere campi mancanti
+        patient.setBirthCity ( patientRequestDTO.getBirthCity () );
+        patient.setBirthDate (patientRequestDTO.getBirthDate ());
+        patient.setGender ( patientRequestDTO.getGender () );
+        patient.setDescription ( patient.getDescription () );
         return patient;
     }
 
