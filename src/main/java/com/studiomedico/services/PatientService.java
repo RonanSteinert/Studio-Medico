@@ -52,7 +52,7 @@ public class PatientService {
     }
 
     private List<PatientResponseDTO> patientEntitiesToResponse(){
-        List<Patient> patients = patientRepository.findAll ();
+        List<Patient> patients = patientRepository.findAll();
         List<PatientResponseDTO> patientResponseDTOS = new ArrayList<> ();
         for(Patient patient : patients){
             patientResponseDTOS.add(patientEntityToResponse (patient));
