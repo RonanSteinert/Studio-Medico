@@ -8,18 +8,13 @@ public class Doctor extends Person {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long idDoctor;
+    private Long idDoctor;
 
     @Column(name = "specialization")
     private String specialization;
 
 
     public Doctor() {
-    }
-
-    public Doctor(long idDoctor) {
-        super();
-        this.idDoctor = idDoctor;
     }
 
     public long getIdDoctor() {

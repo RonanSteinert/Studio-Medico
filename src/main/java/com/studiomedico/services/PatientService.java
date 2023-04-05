@@ -39,9 +39,10 @@ public class PatientService {
     public PatientResponseDTO deletePatient(Long id) throws Exception{
         Patient patient = patientRepository.findById (id).orElseThrow (Exception::new);
         if(patientRepository.existsById (id)){
-            patient.setStatusRecord ( StatusRecord.Deleted );
+            patient.setStatus ( StatusRecord.Deleted );
             patientRepository.save ( patient );
         }else{
+
             //eccezione
         }return patientEntityToResponse ( patient );
 
@@ -69,11 +70,10 @@ public class PatientService {
         patientResponseDTO.setEmail ( patient.getEmail () );
         patientResponseDTO.setAddress ( patient.getAddress () );
         patientResponseDTO.setTelephone ( patient.getTelephone () );
-        patientResponseDTO.setStatusRecord ( patient.getStatusRecord () );
+        patientResponseDTO.setStatusRecord ( patient.getStatus () );
         patientResponseDTO.setBirthCity ( patient.getBirthCity () );
         patientResponseDTO.setBirthDate ( patient.getBirthDate () );
         patientResponseDTO.setGender ( patient.getGender () );
-        patientResponseDTO.setDescription ( patient.getDescription () );
         return patientResponseDTO;
 
     }
@@ -84,11 +84,10 @@ public class PatientService {
         patient.setEmail ( patientRequestDTO.getEmail () );
         patient.setAddress ( patientRequestDTO.getAddress () );
         patient.setTelephone ( patientRequestDTO.getTelephone ());
-        patient.setStatusRecord ( patientRequestDTO.getStatusRecord());
+        patient.setStatus ( patientRequestDTO.getStatusRecord());
         patient.setBirthCity ( patientRequestDTO.getBirthCity () );
         patient.setBirthDate (patientRequestDTO.getBirthDate ());
         patient.setGender ( patientRequestDTO.getGender () );
-        patient.setDescription ( patient.getDescription () );
         return patient;
     }
 

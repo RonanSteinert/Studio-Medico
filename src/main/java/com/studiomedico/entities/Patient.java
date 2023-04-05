@@ -18,8 +18,9 @@ public class Patient extends Person {
     private LocalDateTime birthDate;
     @Column(name = "birthCity")
     private String birthCity;
-    @Column(name = "description")
-    private String description;
+    /*@ManyToOne
+    @JoinColumn
+    private Secretary secretary;*/
 
     public Patient() {
     }
@@ -56,11 +57,11 @@ public class Patient extends Person {
         this.birthCity = birthCity;
     }
 
-    public String getDescription() {
-        return description;
+    /*public Secretary getSecretary() {
+        return secretary;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
+    public void setSecretary(Secretary secretary) {
+        this.secretary = secretary;
+    }*/
 }

@@ -42,7 +42,7 @@ public class DoctorService {
     public DoctorResponseDTO deleteDoctor(Long id) throws Exception {
         Doctor doctor = doctorRepository.findById ( id ).orElseThrow(Exception::new);
         if(doctorRepository.existsById ( id )){
-        doctor.setStatusRecord(StatusRecord.Deleted);
+        doctor.setStatus(StatusRecord.Deleted);
         doctorRepository.save(doctor);
         }else{
          //eccezione di Emi
@@ -60,7 +60,7 @@ public class DoctorService {
         doctorResponseDTO.setEmail ( doctor.getEmail () );
         doctorResponseDTO.setAddress ( doctor.getAddress () );
         doctorResponseDTO.setTelephone ( doctor.getTelephone ());
-        doctorResponseDTO.setStatusRecord(doctor.getStatusRecord ());
+        doctorResponseDTO.setStatusRecord(doctor.getStatus ());
         doctorResponseDTO.setSpecialization ( doctor.getSpecialization () );
         return  doctorResponseDTO;
 
@@ -87,7 +87,7 @@ public class DoctorService {
         doctor.setEmail ( doctorRequestDTO.getEmail () );
         doctor.setAddress ( doctorRequestDTO.getAddress () );
         doctor.setTelephone ( doctorRequestDTO.getTelephone ());
-        doctor.setStatusRecord ( doctorRequestDTO.getStatusRecord());
+        doctor.setStatus ( doctorRequestDTO.getStatusRecord());
         doctor.setSpecialization ( doctorRequestDTO.getSpecialization () );
         return doctor;
     }
