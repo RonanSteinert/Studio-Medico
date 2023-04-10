@@ -20,7 +20,7 @@ public class DoctorService {
     @Autowired
     private DoctorRepository doctorRepository;
 
-    public DoctorResponseDTO createDoctor(DoctorRequestDTO doctorRequestDto) {
+    public DoctorResponseDTO postDoctor(DoctorRequestDTO doctorRequestDto) {
         return doctorEntityToResponse(doctorRepository.save(doctorRequestToEntity(doctorRequestDto)));
     }
 

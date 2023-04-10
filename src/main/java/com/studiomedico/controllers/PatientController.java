@@ -40,7 +40,7 @@ public class PatientController {
    }
 
    @DeleteMapping("{id}")
-   public  PatientResponseDTO patientResponseDTO(@PathVariable("id") Long id) throws Exception {
+   public  PatientResponseDTO deletePatient(@PathVariable("id") Long id) throws Exception {
        return patientService.deletePatient(id);
    }
 

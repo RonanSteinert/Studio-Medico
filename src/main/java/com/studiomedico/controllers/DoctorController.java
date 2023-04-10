@@ -1,9 +1,14 @@
 package com.studiomedico.controllers;
 
+import com.studiomedico.controllers.DTO.DoctorRequestDTO;
+import com.studiomedico.controllers.DTO.DoctorResponseDTO;
+import com.studiomedico.controllers.DTO.PatientRequestDTO;
+import com.studiomedico.controllers.DTO.PatientResponseDTO;
 import com.studiomedico.entities.Doctor;
 import com.studiomedico.entities.Patient;
 import com.studiomedico.repositories.DoctorRepository;
 import com.studiomedico.repositories.PatientRepository;
+import com.studiomedico.services.DoctorService;
 import com.studiomedico.statusEnum.StatusRecord;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,25 +21,48 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/doctor")
 public class DoctorController {
+
+    @Autowired
+    private DoctorService doctorService;
     @Autowired
     private DoctorRepository doctorRepository;
     @Autowired
     private PatientRepository patientRepository;
 
-    @PostMapping("/newdoctor")
-    public Doctor createDoctor(@RequestBody Doctor doctor){
-
-        return doctorRepository.saveAndFlush(doctor);
+    @PostMapping("/new")
+    public DoctorResponseDTO postDoctor(@RequestBody DoctorRequestDTO doctorRequestDTO){
+        return doctorService.postDoctor(doctorRequestDTO);
     }
 
-    @GetMapping("")
-    public Optional<Doctor> getDoctor(@RequestParam Long id){
+    @GetMapping("/{id}")
+    public DoctorResponseDTO getDoctorPathVar(@PathVariable Long id) {
+        return doctorService.getDoctor(id);
+    }
+
+    @GetMapping("/id")
+    public DoctorResponseDTO getDoctorReqParam(@RequestParam Long id){
         //doctorRepository.existsById(id);
-        return doctorRepository.findById(id);
+        return doctorService.getDoctor(id);
     }
-    @GetMapping("/doctorbyid/{id}")
-    public Optional<Doctor> getDoctorById(@PathVariable Long id) {
-        return doctorRepository.findById(id);
+
+    @PutMapping("{id}")
+    public DoctorResponseDTO putDoctor(@PathVariable("id") Long id, @RequestBody DoctorRequestDTO doctorRequestDTO){
+        return doctorService.putDoctor(id, doctorRequestDTO);
+    }
+
+    @GetMapping("/alldoctor")
+    public List<Doctor> getAllDoctor(){
+        return doctorRepository.findByStatus("0");
+    }
+
+    @GetMapping("/getallpatient")
+    public List<Patient> getAllPatient(){
+        return patientRepository.findAll();
+    }
+
+    @DeleteMapping("{id}")
+    public  DoctorResponseDTO deleteDoctor(@PathVariable("id") Long id) throws Exception {
+        return doctorService.deleteDoctor(id);
     }
     /*
     @PutMapping("/put/{id}")
@@ -48,19 +76,9 @@ public class DoctorController {
             doctor = new Doctor();
         }
         return Optional.of(doctor);
-
     }*/
 
-    @GetMapping("/alldoctor")
-    public List<Doctor> getAllDoctor(){
-        return doctorRepository.findByStatus("0");
-    }
-
-    @GetMapping("/getallpatient")
-    public List<Patient> getAllPatient(){
-        return patientRepository.findAll();
-    }
-
+    /*
     @DeleteMapping("/{id}")
     public ResponseEntity deleteById(@PathVariable("id") Long id) {
         if (doctorRepository.existsById(id)) {
@@ -72,4 +90,5 @@ public class DoctorController {
             return new ResponseEntity("no doctor exist with id " + id, HttpStatus.NOT_FOUND);
         }
     }
+     */
 }
