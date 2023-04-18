@@ -8,6 +8,8 @@ import com.studiomedico.statusEnum.StatusBooking;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,6 +20,7 @@ public class BookingService {
     private BookingRepository bookingRepository;
 
     public BookingResponseDTO postBooking(BookingRequestDTO bookingRequestDTO){
+        //if LocalDateTime
         return bookingEntityToResponse ( bookingRepository.save ( bookingRequestToEntity ( bookingRequestDTO ) ) );
     }
 
@@ -67,7 +70,8 @@ public class BookingService {
         return bookingResponseDTO;
     }
     private Booking bookingRequestToEntity(BookingRequestDTO bookingRequestDTO,Booking booking){
-        booking.setBookingDate ( bookingRequestDTO.getBookingDate () );
+        LocalDateTime now = LocalDateTime.now();
+        booking.setBookingDate ( bookingRequestDTO.getBookingDate().atTime(LocalTime.from(now)));
         booking.setStatus ( bookingRequestDTO.getStatus () );
         return booking;
     }

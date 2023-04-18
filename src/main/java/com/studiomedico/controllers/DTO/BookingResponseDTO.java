@@ -3,11 +3,12 @@ package com.studiomedico.controllers.DTO;
 import com.studiomedico.statusEnum.StatusBooking;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class BookingResponseDTO {
 
     private Long id;
-    private LocalDate bookingDate;
+    private LocalDateTime bookingDate;
     private StatusBooking status;
 
     public Long getId() {
@@ -18,11 +19,11 @@ public class BookingResponseDTO {
         this.id = id;
     }
 
-    public LocalDate getBookingDate() {
+    public LocalDateTime getBookingDate() {
         return bookingDate;
     }
 
-    public void setBookingDate(LocalDate bookingDate) {
+    public void setBookingDate(LocalDateTime bookingDate) {
         this.bookingDate = bookingDate;
     }
 

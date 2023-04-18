@@ -3,6 +3,8 @@ package com.studiomedico.entities;
 import com.studiomedico.statusEnum.StatusBooking;
 import jakarta.persistence.*;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+
 @Entity
 @Table
 public class Booking {
@@ -11,7 +13,7 @@ public class Booking {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long idBooking;
     @Column(name = "booking_date")
-    private LocalDate bookingDate;
+    private LocalDateTime bookingDate;
 
     @Column(name = "status")
     @Enumerated(EnumType.STRING)
@@ -20,7 +22,7 @@ public class Booking {
     public Booking() {
     }
 
-    public Booking(long idBooking, LocalDate bookingDate, StatusBooking status) {
+    public Booking(long idBooking, LocalDateTime bookingDate, StatusBooking status) {
         this.idBooking = idBooking;
         this.bookingDate = bookingDate;
         this.status = status;
@@ -34,11 +36,11 @@ public class Booking {
         this.idBooking = idBooking;
     }
 
-    public LocalDate getBookingDate() {
+    public LocalDateTime getBookingDate() {
         return bookingDate;
     }
 
-    public void setBookingDate(LocalDate bookingDate) {
+    public void setBookingDate(LocalDateTime bookingDate) {
         this.bookingDate = bookingDate;
     }
 
