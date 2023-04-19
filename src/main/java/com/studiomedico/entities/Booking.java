@@ -2,6 +2,8 @@ package com.studiomedico.entities;
 
 import com.studiomedico.statusEnum.StatusBooking;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
+
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
@@ -11,21 +13,22 @@ public class Booking {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "idBooking", nullable = false)
     private long idBooking;
-    @Column(name = "booking_date")
+    @NotNull
+    @Column(name = "booking_date", nullable = false)
     private LocalDateTime bookingDate;
+    @ManyToOne
+    private Patient patient;
+    @ManyToOne
+    private Doctor doctor;
 
-    @Column(name = "status")
-    @Enumerated(EnumType.STRING)
-    private StatusBooking status;
+    private int bookingDuration;
+    public Booking(){}
 
-    public Booking() {
-    }
-
-    public Booking(long idBooking, LocalDateTime bookingDate, StatusBooking status) {
+    public Booking(long idBooking, LocalDateTime bookingDate) {
         this.idBooking = idBooking;
         this.bookingDate = bookingDate;
-        this.status = status;
     }
 
     public long getIdBooking() {
@@ -44,11 +47,27 @@ public class Booking {
         this.bookingDate = bookingDate;
     }
 
-    public StatusBooking getStatus() {
-        return status;
+    public Patient getPatient() {
+        return patient;
     }
 
-    public void setStatus(StatusBooking status) {
-        this.status = status;
+    public void setPatient(Patient patient) {
+        this.patient = patient;
+    }
+
+    public Doctor getDoctor() {
+        return doctor;
+    }
+
+    public void setDoctor(Doctor doctor) {
+        this.doctor = doctor;
+    }
+
+    public int getBookingDuration() {
+        return bookingDuration;
+    }
+
+    public void setBookingDuration(int bookingDuration) {
+        this.bookingDuration = bookingDuration;
     }
 }

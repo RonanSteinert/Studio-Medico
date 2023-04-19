@@ -1,22 +1,27 @@
 package com.studiomedico.controllers.DTO;
 
+import com.studiomedico.entities.Doctor;
+import com.studiomedico.entities.Patient;
 import com.studiomedico.statusEnum.StatusBooking;
 
+import javax.print.Doc;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class BookingResponseDTO {
 
-    private Long id;
     private LocalDateTime bookingDate;
-    private StatusBooking status;
 
-    public Long getId() {
-        return id;
-    }
+    private DoctorResponseDTO doctor;
 
-    public void setId(Long id) {
-        this.id = id;
+    private PatientResponseDTO patient;
+
+    public BookingResponseDTO(){}
+
+    public BookingResponseDTO(LocalDateTime bookingDate, DoctorResponseDTO doctor, PatientResponseDTO patient) {
+        this.bookingDate = bookingDate;
+        this.doctor = doctor;
+        this.patient = patient;
     }
 
     public LocalDateTime getBookingDate() {
@@ -27,11 +32,19 @@ public class BookingResponseDTO {
         this.bookingDate = bookingDate;
     }
 
-    public StatusBooking getStatus() {
-        return status;
+    public DoctorResponseDTO getDoctor() {
+        return doctor;
     }
 
-    public void setStatus(StatusBooking status) {
-        this.status = status;
+    public void setDoctor(DoctorResponseDTO doctor) {
+        this.doctor = doctor;
+    }
+
+    public PatientResponseDTO getPatient() {
+        return patient;
+    }
+
+    public void setPatient(PatientResponseDTO patient) {
+        this.patient = patient;
     }
 }

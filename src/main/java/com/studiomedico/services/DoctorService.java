@@ -51,7 +51,7 @@ public class DoctorService {
     }
 
 
-    private DoctorResponseDTO doctorEntityToResponse(Doctor doctor){
+    public DoctorResponseDTO doctorEntityToResponse(Doctor doctor){
 
         DoctorResponseDTO doctorResponseDTO = new DoctorResponseDTO ();
         doctorResponseDTO.setId ( doctor.getIdDoctor () );

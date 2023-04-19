@@ -61,7 +61,7 @@ public class PatientService {
         return patientResponseDTOS;
     }
 
-    private PatientResponseDTO patientEntityToResponse(Patient patient){
+    public PatientResponseDTO patientEntityToResponse(Patient patient){
 
         PatientResponseDTO patientResponseDTO = new PatientResponseDTO ();
         patientResponseDTO.setId( patient.getIdPatient () );
