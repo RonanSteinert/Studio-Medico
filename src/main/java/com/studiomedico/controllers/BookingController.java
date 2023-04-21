@@ -2,6 +2,7 @@ package com.studiomedico.controllers;
 
 import com.studiomedico.controllers.DTO.BookingRequestDTO;
 import com.studiomedico.controllers.DTO.BookingResponseDTO;
+import com.studiomedico.entities.Booking;
 import com.studiomedico.entities.Doctor;
 import com.studiomedico.services.BookingService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,12 +16,12 @@ public class BookingController {
 
     @Autowired
     private BookingService bookingService;
-    @PostMapping("/post")
+    @PostMapping("/new")
     public BookingResponseDTO postBooking(@RequestBody BookingRequestDTO request){
-        return bookingService.postBooking (request);
+        return bookingService.postBooking ( request );
     }
 
-    @GetMapping("get/{id}")
+    @GetMapping("/{id}")
     public BookingResponseDTO getBooking(@PathVariable Long id){
         return bookingService.getBooking(id);
     }
@@ -29,12 +30,6 @@ public class BookingController {
         return bookingService.getBookingsByPatient(AuthenticationContext.get().getUsername());
     }*/
 
-    @GetMapping("/doctor/{doctorById}")
-    public List<BookingResponseDTO> getBookingsByDoctor(@PathVariable long doctorId) {
-        Doctor doctor = new Doctor();
-        doctor.setIdDoctor(doctorId);
-        return bookingService.getBookingsByDoctor(doctor);
-    }
 
     @GetMapping("/list")
     public List<BookingResponseDTO> getListOfBookings(@RequestParam int page, @RequestParam int pageSize){

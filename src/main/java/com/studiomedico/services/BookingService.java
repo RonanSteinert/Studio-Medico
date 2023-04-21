@@ -3,11 +3,7 @@ package com.studiomedico.services;
 import com.studiomedico.controllers.DTO.BookingRequestDTO;
 import com.studiomedico.controllers.DTO.BookingResponseDTO;
 import com.studiomedico.entities.Booking;
-import com.studiomedico.entities.Doctor;
-import com.studiomedico.entities.Patient;
-import com.studiomedico.exception.UserNotFoundException;
 import com.studiomedico.repositories.BookingRepository;
-import com.studiomedico.repositories.PatientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -19,44 +15,15 @@ import java.util.List;
 @Service
 public class BookingService {
 
+    //capire come gestire prenotazione
+
     @Autowired
     private BookingRepository bookingRepository;
-    @Autowired
-    private PatientRepository patientRepository;
-    @Autowired
-    private DoctorService doctorService;
-    @Autowired
-    private PatientService patientService;
-
-    public List<BookingResponseDTO> getBookingsByDoctor(Doctor doctor_id) {
-        return bookingsEntitiesToResponses(bookingRepository.findBydoctor(doctor_id));
-
-    }
-    public List<BookingResponseDTO> getBookingsByPatient(long patient_id) {
-        Patient newPatient = new Patient();
-        newPatient.setIdPatient(patient_id);
-        return bookingsEntitiesToResponses(bookingRepository.findBypatient(newPatient));
-    }
-
 
     public BookingResponseDTO postBooking(BookingRequestDTO bookingRequestDTO){
-        List<Booking> reservationList = bookingRepository.findBydateReservation(bookingRequestDTO.getBookingDate());
-        int totalDuration = Integer.parseInt("1800");
-        Booking booking;
-        booking = bookingRequestToEntity(bookingRequestDTO);
-        if (booking.getBookingDate().getMinute() == 30 || booking.getBookingDate().getMinute() == 00){
-            for (Booking existingReservation : reservationList){
-                totalDuration += existingReservation.getBookingDate().getSecond();
-            }
-            if(totalDuration + booking.getBookingDuration() > 1800){
-                throw new UserNotFoundException();
-            }else{
-                return bookingEntityToResponse(bookingRepository.save(bookingRequestToEntity(bookingRequestDTO)));
-            }
-        }else{
-            throw new UserNotFoundException();
-        }
+        return bookingEntityToResponse (bookingRepository.save ( bookingRequestToEntity ( bookingRequestDTO ) ));
     }
+
 
     public BookingResponseDTO getBooking(long id) {
         Booking booking = bookingRepository.findById(id).orElseThrow(RuntimeException::new);
@@ -107,8 +74,6 @@ public class BookingService {
     private BookingResponseDTO bookingEntityToResponse(Booking booking){
         BookingResponseDTO response = new BookingResponseDTO();
         response.setBookingDate(booking.getBookingDate());
-        response.setDoctor(doctorService.doctorEntityToResponse(booking.getDoctor()));
-        response.setPatient(patientService.patientEntityToResponse(booking.getPatient()));
         return response;
     }
 
