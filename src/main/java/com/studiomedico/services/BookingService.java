@@ -3,27 +3,55 @@ package com.studiomedico.services;
 import com.studiomedico.controllers.DTO.BookingRequestDTO;
 import com.studiomedico.controllers.DTO.BookingResponseDTO;
 import com.studiomedico.entities.Booking;
+import com.studiomedico.exception.BookingNotAvailableException;
 import com.studiomedico.repositories.BookingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class BookingService {
 
-    //capire come gestire prenotazione
-
     @Autowired
     private BookingRepository bookingRepository;
 
-    public BookingResponseDTO postBooking(BookingRequestDTO bookingRequestDTO){
-        return bookingEntityToResponse (bookingRepository.save ( bookingRequestToEntity ( bookingRequestDTO ) ));
+    public boolean isBookingAvailable(LocalDateTime bookingDate) {
+        Optional<Booking> booking = bookingRepository.findByBookingDate (bookingDate);
+        return booking.isEmpty();
     }
 
+    public Booking createBooking(Booking booking) throws BookingNotAvailableException {
+        LocalDateTime bookingDate = booking.getBookingDate();
+
+        // Calcola la data e l'ora di fine della prenotazione
+        LocalDateTime endDateTime = bookingDate.plusMinutes(30);
+
+        // Verifica se la prenotazione è disponibile
+        Optional<Booking> existingBooking = bookingRepository.findByBookingDate(bookingDate);
+        if (existingBooking.isPresent()) {
+            throw new BookingNotAvailableException( HttpStatus.BAD_REQUEST );
+        }
+
+        // Verifica se la prenotazione si sovrappone ad altre prenotazioni
+        LocalDateTime startDateTime = bookingDate;
+        LocalDateTime overlapEndDateTime = bookingDate.plusMinutes(30);
+        List<Booking> overlappingBookings = bookingRepository.findByBookingDateBetween(startDateTime, overlapEndDateTime);
+        if (!overlappingBookings.isEmpty()) {
+            throw new BookingNotAvailableException(HttpStatus.BAD_REQUEST);
+        }
+
+        // Se la prenotazione è disponibile, salvala nel database
+        booking.setBookingDate(endDateTime);
+        return bookingRepository.save(booking);
+    }
 
     public BookingResponseDTO getBooking(long id) {
         Booking booking = bookingRepository.findById(id).orElseThrow(RuntimeException::new);
@@ -68,6 +96,7 @@ public class BookingService {
         booking.setBookingDate(request.getBookingDate());
         booking.setDoctor(request.getDoctor());
         booking.setPatient(request.getPatient());
+
         return booking;
     }
 

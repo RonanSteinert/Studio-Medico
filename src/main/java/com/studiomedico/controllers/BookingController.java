@@ -3,9 +3,10 @@ package com.studiomedico.controllers;
 import com.studiomedico.controllers.DTO.BookingRequestDTO;
 import com.studiomedico.controllers.DTO.BookingResponseDTO;
 import com.studiomedico.entities.Booking;
-import com.studiomedico.entities.Doctor;
+import com.studiomedico.exception.BookingNotAvailableException;
 import com.studiomedico.services.BookingService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,8 +18,9 @@ public class BookingController {
     @Autowired
     private BookingService bookingService;
     @PostMapping("/new")
-    public BookingResponseDTO postBooking(@RequestBody BookingRequestDTO request){
-        return bookingService.postBooking ( request );
+    public Booking createBooking( @RequestBody Booking booking) throws BookingNotAvailableException {
+        return bookingService.createBooking(booking);
+
     }
 
     @GetMapping("/{id}")
