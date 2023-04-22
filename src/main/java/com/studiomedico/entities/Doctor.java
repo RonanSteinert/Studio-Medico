@@ -8,6 +8,7 @@ public class Doctor extends Person {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="id_doctor")
     private Long idDoctor;
 
     @Column(name = "specialization")

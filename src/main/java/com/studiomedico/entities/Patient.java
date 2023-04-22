@@ -10,6 +10,7 @@ public class Patient extends Person {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_patient")
     private Long idPatient;
     @Column(name = "gender")
     @Enumerated(EnumType.STRING)

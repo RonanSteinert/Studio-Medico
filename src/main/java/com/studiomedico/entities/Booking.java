@@ -13,14 +13,16 @@ public class Booking {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idBooking", nullable = false)
+    @Column(name = "id_booking", nullable = false)
     private long idBooking;
     @NotNull
     @Column(name = "booking_date", nullable = false)
     private LocalDateTime bookingDate;
     @ManyToOne
+    @JoinColumn(name="id_patient")
     private Patient patient;
     @ManyToOne
+    @JoinColumn(name ="id_doctor")
     private Doctor doctor;
 
     private int bookingDuration;
