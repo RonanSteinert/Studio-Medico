@@ -44,8 +44,8 @@ public class BookingService {
         // Verifica se la prenotazione si sovrappone ad altre prenotazioni
         LocalDateTime startDateTime = bookingDate;
         LocalDateTime overlapEndDateTime = bookingDate.plusMinutes(30);
-        List<Booking> overlappingBookings = bookingRepository.findByBookingDateBetween(startDateTime, overlapEndDateTime);
-        if (!overlappingBookings.isEmpty()) {
+        List<Booking> bookings = bookingRepository.findByBookingDateBetween(startDateTime, overlapEndDateTime);
+        if (!bookings.isEmpty()) {
             throw new BookingNotAvailableException(HttpStatus.BAD_REQUEST);
         }
         // Cerca il paziente con l'ID specificato

@@ -25,7 +25,6 @@ public class Booking {
     @JoinColumn(name ="id_doctor")
     private Doctor doctor;
 
-    private int bookingDuration;
     public Booking(){}
 
     public Booking(long idBooking, LocalDateTime bookingDate) {
@@ -65,11 +64,4 @@ public class Booking {
         this.doctor = doctor;
     }
 
-    public int getBookingDuration() {
-        return bookingDuration;
-    }
-
-    public void setBookingDuration(int bookingDuration) {
-        this.bookingDuration = bookingDuration;
-    }
 }
