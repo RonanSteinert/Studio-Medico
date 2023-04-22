@@ -3,14 +3,16 @@ package com.studiomedico.services;
 import com.studiomedico.controllers.DTO.BookingRequestDTO;
 import com.studiomedico.controllers.DTO.BookingResponseDTO;
 import com.studiomedico.entities.Booking;
+import com.studiomedico.entities.Patient;
 import com.studiomedico.exception.BookingNotAvailableException;
 import com.studiomedico.repositories.BookingRepository;
+import com.studiomedico.repositories.PatientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.webjars.NotFoundException;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -23,12 +25,11 @@ public class BookingService {
     @Autowired
     private BookingRepository bookingRepository;
 
-    public boolean isBookingAvailable(LocalDateTime bookingDate) {
-        Optional<Booking> booking = bookingRepository.findByBookingDate (bookingDate);
-        return booking.isEmpty();
-    }
+    @Autowired
+    private PatientRepository patientRepository;
 
-    public Booking createBooking(Booking booking) throws BookingNotAvailableException {
+
+    public Booking createBooking(Booking booking, Long idPatient) throws BookingNotAvailableException {
         LocalDateTime bookingDate = booking.getBookingDate();
 
         // Calcola la data e l'ora di fine della prenotazione
@@ -47,9 +48,14 @@ public class BookingService {
         if (!overlappingBookings.isEmpty()) {
             throw new BookingNotAvailableException(HttpStatus.BAD_REQUEST);
         }
-
+        // Cerca il paziente con l'ID specificato
+        Optional<Patient> patient = patientRepository.findById(idPatient);
+        if (patient.isEmpty()) {
+            throw new NotFoundException ("Il paziente non è stato trovato.");
+        }
         // Se la prenotazione è disponibile, salvala nel database
         booking.setBookingDate(endDateTime);
+        booking.setPatient(patient.get());
         return bookingRepository.save(booking);
     }
 

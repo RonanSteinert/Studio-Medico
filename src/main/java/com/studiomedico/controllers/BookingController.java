@@ -17,9 +17,9 @@ public class BookingController {
 
     @Autowired
     private BookingService bookingService;
-    @PostMapping("/new")
-    public Booking createBooking( @RequestBody Booking booking) throws BookingNotAvailableException {
-        return bookingService.createBooking(booking);
+    @PostMapping("/new/{id}")
+    public Booking createBooking( @RequestBody Booking booking, @PathVariable (value = "id") Long idPatient) throws BookingNotAvailableException {
+        return bookingService.createBooking(booking,idPatient);
 
     }
 

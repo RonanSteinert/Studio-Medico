@@ -3,6 +3,7 @@ package com.studiomedico.entities;
 import com.studiomedico.statusEnum.StatusGender;
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Table
@@ -19,9 +20,9 @@ public class Patient extends Person {
     private LocalDateTime birthDate;
     @Column(name = "birthCity")
     private String birthCity;
-    /*@ManyToOne
-    @JoinColumn
-    private Secretary secretary;*/
+
+    @OneToMany(mappedBy = "patient")
+    private List<Booking> bookings;
 
     public Patient() {
     }
