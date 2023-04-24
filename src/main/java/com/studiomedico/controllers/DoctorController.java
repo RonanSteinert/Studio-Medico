@@ -2,17 +2,12 @@ package com.studiomedico.controllers;
 
 import com.studiomedico.controllers.DTO.DoctorRequestDTO;
 import com.studiomedico.controllers.DTO.DoctorResponseDTO;
-import com.studiomedico.controllers.DTO.PatientRequestDTO;
-import com.studiomedico.controllers.DTO.PatientResponseDTO;
 import com.studiomedico.entities.Doctor;
 import com.studiomedico.entities.Patient;
 import com.studiomedico.repositories.DoctorRepository;
 import com.studiomedico.repositories.PatientRepository;
 import com.studiomedico.services.DoctorService;
-import com.studiomedico.statusEnum.StatusRecord;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -24,6 +19,8 @@ public class DoctorController {
 
     @Autowired
     private DoctorService doctorService;
+
+
     @Autowired
     private DoctorRepository doctorRepository;
     @Autowired
@@ -55,6 +52,7 @@ public class DoctorController {
         return doctorRepository.findByStatus("0");
     }
 
+    //non serve questa get nel dottore
     @GetMapping("/getallpatient")
     public List<Patient> getAllPatient(){
         return patientRepository.findAll();

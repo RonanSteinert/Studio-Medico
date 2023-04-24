@@ -31,16 +31,13 @@ public class BookingService {
 
     public Booking createBooking(Booking booking, Long idPatient) throws BookingNotAvailableException {
         LocalDateTime bookingDate = booking.getBookingDate();
-
         // Calcola la data e l'ora di fine della prenotazione
         LocalDateTime endDateTime = bookingDate.plusMinutes(30);
-
         // Verifica se la prenotazione è disponibile
         Optional<Booking> existingBooking = bookingRepository.findByBookingDate(bookingDate);
         if (existingBooking.isPresent()) {
             throw new BookingNotAvailableException( HttpStatus.BAD_REQUEST );
         }
-
         // Verifica se la prenotazione si sovrappone ad altre prenotazioni
         LocalDateTime startDateTime = bookingDate;
         LocalDateTime overlapEndDateTime = bookingDate.plusMinutes(30);

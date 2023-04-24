@@ -6,7 +6,6 @@ import com.studiomedico.entities.Booking;
 import com.studiomedico.exception.BookingNotAvailableException;
 import com.studiomedico.services.BookingService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -20,7 +19,6 @@ public class BookingController {
     @PostMapping("/new/{id}")
     public Booking createBooking( @RequestBody Booking booking, @PathVariable (value = "id") Long idPatient) throws BookingNotAvailableException {
         return bookingService.createBooking(booking,idPatient);
-
     }
 
     @GetMapping("/{id}")
