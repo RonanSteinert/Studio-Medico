@@ -23,11 +23,10 @@ public class SecretaryController {
     public SecretaryResponseDTO postSecretary(@RequestBody SecretaryRequestDTO secretaryRequestDTO){
         return secretaryService.postSecretary(secretaryRequestDTO);
     }
-
+    //secretary controller can post a booking
     @PostMapping("/new/{id}")
     public Booking createBooking(@RequestBody Booking booking, @PathVariable (value = "id") Long idPatient) throws BookingNotAvailableException {
         return secretaryService.createBooking(booking,idPatient);
     }
-
 
 }
