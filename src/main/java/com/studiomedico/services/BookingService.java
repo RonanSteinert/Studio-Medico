@@ -5,6 +5,7 @@ import com.studiomedico.controllers.DTO.BookingResponseDTO;
 import com.studiomedico.entities.Booking;
 import com.studiomedico.entities.Patient;
 import com.studiomedico.exception.BookingNotAvailableException;
+import com.studiomedico.exception.UserNotFoundException;
 import com.studiomedico.repositories.BookingRepository;
 import com.studiomedico.repositories.PatientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,16 +52,19 @@ public class BookingService {
             throw new NotFoundException ("Il paziente non è stato trovato.");
         }
         // Se la prenotazione è disponibile, salvala nel database
-        booking.setBookingDate(endDateTime);
+        booking.setBookingDate(startDateTime);
         booking.setPatient(patient.get());
         return bookingRepository.save(booking);
     }
 
-    public BookingResponseDTO getBooking(long id) {
+    public Booking getBooking(long id) {
         Booking booking = bookingRepository.findById(id).orElseThrow(RuntimeException::new);
-        return bookingEntityToResponse(booking);
+        return booking;
     }
 
+    public List<BookingResponseDTO> getAllActiveBooking(Long id) {
+        return bookingsEntitiesToResponses(bookingRepository.findAllByPatient(id));
+    }
 
     public BookingResponseDTO putBooking(long id, BookingRequestDTO request) {
         Booking booking = bookingRepository.findById(id).orElseThrow(RuntimeException::new);
@@ -69,11 +73,23 @@ public class BookingService {
 
     }
 
+    public Optional<Booking> getSingleBooking(Long id){
+        if(bookingRepository.existsById(id)){
+            Optional<Booking> booking = bookingRepository.findById(id);
+            return Optional.of(booking.get ());
+        }else {
+            throw new UserNotFoundException ();
+        }
+    }
 
     public BookingResponseDTO deleteBooking(long id) {
         Booking booking = bookingRepository.findById(id).orElseThrow(RuntimeException::new);
         bookingRepository.delete(booking);
         return bookingEntityToResponse(booking);
+    }
+
+    public List<Booking> allBooking(){
+        return bookingRepository.findAll ();
     }
 
     public List<BookingResponseDTO> getBookingPage(Integer page, Integer pageSize) {
@@ -97,7 +113,6 @@ public class BookingService {
 
     private Booking bookingRequestToEntity(BookingRequestDTO request, Booking booking){
         booking.setBookingDate(request.getBookingDate());
-        booking.setDoctor(request.getDoctor());
         booking.setPatient(request.getPatient());
 
         return booking;

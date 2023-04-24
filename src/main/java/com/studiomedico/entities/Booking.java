@@ -21,9 +21,7 @@ public class Booking {
     @ManyToOne
     @JoinColumn(name="id_patient")
     private Patient patient;
-    @ManyToOne
-    @JoinColumn(name ="id_doctor")
-    private Doctor doctor;
+
 
     public Booking(){}
 
@@ -54,14 +52,6 @@ public class Booking {
 
     public void setPatient(Patient patient) {
         this.patient = patient;
-    }
-
-    public Doctor getDoctor() {
-        return doctor;
-    }
-
-    public void setDoctor(Doctor doctor) {
-        this.doctor = doctor;
     }
 
 }

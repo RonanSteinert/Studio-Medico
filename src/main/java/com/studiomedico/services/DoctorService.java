@@ -1,7 +1,9 @@
 package com.studiomedico.services;
 
+import com.studiomedico.controllers.DTO.BookingResponseDTO;
 import com.studiomedico.controllers.DTO.DoctorRequestDTO;
 import com.studiomedico.controllers.DTO.DoctorResponseDTO;
+import com.studiomedico.entities.Booking;
 import com.studiomedico.entities.Doctor;
 import com.studiomedico.repositories.DoctorRepository;
 import com.studiomedico.statusEnum.StatusRecord;
@@ -19,6 +21,9 @@ public class DoctorService {
 
     @Autowired
     private DoctorRepository doctorRepository;
+
+    @Autowired
+    private BookingService bookingService;
 
     public DoctorResponseDTO postDoctor(DoctorRequestDTO doctorRequestDto) {
         return doctorEntityToResponse(doctorRepository.save(doctorRequestToEntity(doctorRequestDto)));
@@ -49,7 +54,13 @@ public class DoctorService {
         }
         return doctorEntityToResponse (doctor);
     }
+    public List<Booking> allBooking() {
+        return bookingService.allBooking ();
+    }
 
+    public List<BookingResponseDTO> getBookingPage(Integer page, Integer pageSize) {
+        return bookingService.getBookingPage ( page,pageSize );
+    }
 
     public DoctorResponseDTO doctorEntityToResponse(Doctor doctor){
 
@@ -91,6 +102,8 @@ public class DoctorService {
         doctor.setSpecialization ( doctorRequestDTO.getSpecialization () );
         return doctor;
     }
+
+
 }
 
 

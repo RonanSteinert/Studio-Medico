@@ -2,6 +2,7 @@ package com.studiomedico.entities;
 
 import com.studiomedico.statusEnum.StatusRecord;
 import jakarta.persistence.Column;
+import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.MappedSuperclass;
 
@@ -27,7 +28,7 @@ public class Person {
     @Column(name = "modify_on")
     private LocalDate modifyOn;
     @Column(name = "status")
-    @Enumerated
+    @Enumerated(EnumType.STRING)
     private StatusRecord status;
 
     public Person() {

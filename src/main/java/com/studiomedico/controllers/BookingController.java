@@ -22,14 +22,22 @@ public class BookingController {
     }
 
     @GetMapping("/{id}")
-    public BookingResponseDTO getBooking(@PathVariable Long id){
+    public Booking getBooking(@PathVariable Long id){
         return bookingService.getBooking(id);
     }
     /*@GetMapping("/patient")
     public List<BookingResponseDTO> getBookingsByPatient() {
         return bookingService.getBookingsByPatient(AuthenticationContext.get().getUsername());
     }*/
+    @GetMapping("/allbooking")
+    public List<Booking> getListOfBookings(){
+        return bookingService.allBooking ();
+    }
 
+    @GetMapping("/bookings/{id}")
+    public List<BookingResponseDTO> getAllActiveBookings(@PathVariable Long id) {
+        return bookingService.getAllActiveBooking(id);
+    }
 
     @GetMapping("/list")
     public List<BookingResponseDTO> getListOfBookings(@RequestParam int page, @RequestParam int pageSize){

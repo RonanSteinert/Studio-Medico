@@ -2,7 +2,9 @@ package com.studiomedico.services;
 
 import com.studiomedico.controllers.DTO.PatientRequestDTO;
 import com.studiomedico.controllers.DTO.PatientResponseDTO;
+import com.studiomedico.entities.Booking;
 import com.studiomedico.entities.Patient;
+import com.studiomedico.repositories.BookingRepository;
 import com.studiomedico.repositories.PatientRepository;
 import com.studiomedico.statusEnum.StatusRecord;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +18,9 @@ public class PatientService {
 
     @Autowired
     private PatientRepository patientRepository;
+
+    @Autowired
+    private BookingService bookingService;
 
 
     public PatientResponseDTO getPatient(Long id) {
@@ -47,6 +52,8 @@ public class PatientService {
         }return patientEntityToResponse ( patient );
 
     }
+
+
     private Patient patientRequestToEntity(PatientRequestDTO patientRequestDTO){
         Patient patient = new Patient ();
         return patientRequestToEntity (patientRequestDTO,patient);

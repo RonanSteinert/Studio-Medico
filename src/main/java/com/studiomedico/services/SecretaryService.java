@@ -29,6 +29,10 @@ public class SecretaryService {
         return bookingService.createBooking ( booking,idPatient );
     }
 
+    public List<Booking> allBooking() {
+        return bookingService.allBooking ();
+    }
+
     public List<BookingResponseDTO> getBookingPage(Integer page, Integer pageSize) {
         return bookingService.getBookingPage ( page,pageSize );
     }
