@@ -12,16 +12,11 @@ public class BookingResponseDTO {
 
     private LocalDateTime bookingDate;
 
-    private DoctorResponseDTO doctor;
-
-    private PatientResponseDTO patient;
 
     public BookingResponseDTO(){}
 
-    public BookingResponseDTO(LocalDateTime bookingDate, DoctorResponseDTO doctor, PatientResponseDTO patient) {
+    public BookingResponseDTO(LocalDateTime bookingDate) {
         this.bookingDate = bookingDate;
-        this.doctor = doctor;
-        this.patient = patient;
     }
 
     public LocalDateTime getBookingDate() {
@@ -32,19 +27,5 @@ public class BookingResponseDTO {
         this.bookingDate = bookingDate;
     }
 
-    public DoctorResponseDTO getDoctor() {
-        return doctor;
-    }
 
-    public void setDoctor(DoctorResponseDTO doctor) {
-        this.doctor = doctor;
-    }
-
-    public PatientResponseDTO getPatient() {
-        return patient;
-    }
-
-    public void setPatient(PatientResponseDTO patient) {
-        this.patient = patient;
-    }
 }

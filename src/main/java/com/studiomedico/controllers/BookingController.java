@@ -50,8 +50,8 @@ public class BookingController {
     }
 
     @DeleteMapping("/{id}")
-    public BookingResponseDTO deleteBooking(@PathVariable("id") Long id){
-        return bookingService.deleteBooking(id);
+    public void deleteBooking(@PathVariable("id") Long id){
+         bookingService.deleteBooking(id);
     }
 
 

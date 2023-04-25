@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.webjars.NotFoundException;
 
@@ -82,10 +83,9 @@ public class BookingService {
         }
     }
 
-    public BookingResponseDTO deleteBooking(long id) {
-        Booking booking = bookingRepository.findById(id).orElseThrow(RuntimeException::new);
-        bookingRepository.delete(booking);
-        return bookingEntityToResponse(booking);
+    public ResponseEntity deleteBooking(long id) {
+        bookingRepository.deleteById(id);
+        return new  ResponseEntity("Booking Cancelled" + id, HttpStatus.NO_CONTENT);
     }
 
     public List<Booking> allBooking(){
@@ -113,7 +113,6 @@ public class BookingService {
 
     private Booking bookingRequestToEntity(BookingRequestDTO request, Booking booking){
         booking.setBookingDate(request.getBookingDate());
-        booking.setPatient(request.getPatient());
 
         return booking;
     }

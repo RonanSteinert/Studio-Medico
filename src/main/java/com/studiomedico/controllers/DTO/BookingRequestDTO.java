@@ -10,8 +10,6 @@ import java.time.LocalDateTime;
 public class BookingRequestDTO {
 
     private LocalDateTime bookingDate;
-    private Doctor doctor;
-    private Patient patient;
 
     public BookingRequestDTO(){}
 
@@ -23,19 +21,5 @@ public class BookingRequestDTO {
         this.bookingDate = bookingDate;
     }
 
-    public Doctor getDoctor() {
-        return doctor;
-    }
 
-    public void setDoctor(Doctor doctor) {
-        this.doctor = doctor;
-    }
-
-    public Patient getPatient() {
-        return patient;
-    }
-
-    public void setPatient(Patient patient) {
-        this.patient = patient;
-    }
 }
