@@ -1,8 +1,6 @@
 package com.studiomedico.controllers;
 
-import com.studiomedico.controllers.DTO.BookingResponseDTO;
-import com.studiomedico.controllers.DTO.SecretaryRequestDTO;
-import com.studiomedico.controllers.DTO.SecretaryResponseDTO;
+import com.studiomedico.controllers.DTO.*;
 import com.studiomedico.entities.Booking;
 import com.studiomedico.exception.BookingNotAvailableException;
 import com.studiomedico.services.BookingService;
@@ -22,7 +20,29 @@ public class SecretaryController {
     @Autowired
     private BookingService bookingService;
 
-    @PostMapping("/postsecretary")
+    @PutMapping("/{id}")
+    public SecretaryResponseDTO putSecretary(@PathVariable("id") Long id, @RequestBody SecretaryRequestDTO secretaryRequestDTO){
+        return secretaryService.putSecretary(id, secretaryRequestDTO);
+    }
+
+    @GetMapping("/{id}")
+    public SecretaryResponseDTO getSecretaryPathVar(@PathVariable Long id) {
+
+        return secretaryService.getSecretary(id);
+    }
+    @DeleteMapping("/{id}")
+    public  SecretaryResponseDTO deleteSecretary(@PathVariable("id") Long id) throws Exception {
+        return secretaryService.deleteSecretary(id);
+    }
+    @GetMapping("/allsecretary")
+    public List<SecretaryResponseDTO> getAllSecretary(){
+        return secretaryService.getAllSecretary ();
+    }
+
+
+
+
+    @PostMapping("/new")
     public SecretaryResponseDTO postSecretary(@RequestBody SecretaryRequestDTO secretaryRequestDTO){
         return secretaryService.postSecretary(secretaryRequestDTO);
     }

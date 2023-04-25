@@ -43,12 +43,12 @@ public class PatientController {
        return bookingService.getSingleBooking ( id );
    }
 
-   @PutMapping("{id}")
+   @PutMapping("/{id}")
     public PatientResponseDTO putPatient(@PathVariable("id") Long id, @RequestBody PatientRequestDTO patientRequestDTO){
        return patientService.putPatient(id,patientRequestDTO);
    }
 
-   @DeleteMapping("{id}")
+   @DeleteMapping("/{id}")
    public  PatientResponseDTO deletePatient(@PathVariable("id") Long id) throws Exception {
        return patientService.deletePatient(id);
    }

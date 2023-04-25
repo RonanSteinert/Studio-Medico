@@ -45,7 +45,7 @@ public class DoctorController {
         return doctorService.getDoctor(id);
     }
 
-    @PutMapping("{id}")
+    @PutMapping("/{id}")
     public DoctorResponseDTO putDoctor(@PathVariable("id") Long id, @RequestBody DoctorRequestDTO doctorRequestDTO){
         return doctorService.putDoctor(id, doctorRequestDTO);
     }
@@ -65,7 +65,7 @@ public class DoctorController {
         return patientService.getAllPatients ();
     }
 
-    @DeleteMapping("{id}")
+    @DeleteMapping("/{id}")
     public  DoctorResponseDTO deleteDoctor(@PathVariable("id") Long id) throws Exception {
         return doctorService.deleteDoctor(id);
     }
