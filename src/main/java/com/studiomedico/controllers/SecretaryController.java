@@ -22,7 +22,7 @@ public class SecretaryController {
     @Autowired
     private BookingService bookingService;
 
-    @PostMapping("/new")
+    @PostMapping("/postsecretary")
     public SecretaryResponseDTO postSecretary(@RequestBody SecretaryRequestDTO secretaryRequestDTO){
         return secretaryService.postSecretary(secretaryRequestDTO);
     }

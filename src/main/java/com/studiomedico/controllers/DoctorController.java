@@ -29,7 +29,7 @@ public class DoctorController {
     private PatientService patientService;
 
 
-    @PostMapping("/new")
+    @PostMapping("/postdoctor")
     public DoctorResponseDTO postDoctor(@RequestBody DoctorRequestDTO doctorRequestDTO){
         return doctorService.postDoctor(doctorRequestDTO);
     }

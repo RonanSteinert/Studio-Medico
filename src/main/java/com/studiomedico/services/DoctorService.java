@@ -72,7 +72,6 @@ public class DoctorService {
         doctorResponseDTO.setAddress ( doctor.getAddress () );
         doctorResponseDTO.setTelephone ( doctor.getTelephone ());
         doctorResponseDTO.setStatusRecord(doctor.getStatus ());
-        doctorResponseDTO.setSpecialization ( doctor.getSpecialization () );
         return  doctorResponseDTO;
 
     }
@@ -99,7 +98,6 @@ public class DoctorService {
         doctor.setAddress ( doctorRequestDTO.getAddress () );
         doctor.setTelephone ( doctorRequestDTO.getTelephone ());
         doctor.setStatus ( doctorRequestDTO.getStatusRecord());
-        doctor.setSpecialization ( doctorRequestDTO.getSpecialization () );
         return doctor;
     }
 
